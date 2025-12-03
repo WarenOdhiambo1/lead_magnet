@@ -1,0 +1,1728 @@
+{
+  "audit_log": {
+    "columns": [
+      {
+        "name": "log_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('audit_log_log_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "action_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "entity_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "entity_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "performed_by",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": "'SYSTEM'::character varying",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "timestamp",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "details",
+        "type": "jsonb",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "log_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "bookmakers": {
+    "columns": [
+      {
+        "name": "bookie_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('bookmakers_bookie_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "trust_rating",
+        "type": "integer",
+        "nullable": true,
+        "default": "5",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "api_endpoint",
+        "type": "character varying(255)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "commission_percent",
+        "type": "numeric",
+        "nullable": true,
+        "default": "5.00",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "bookie_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "calculated_opportunities": {
+    "columns": [
+      {
+        "name": "opp_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('calculated_opportunities_opp_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "match_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "market_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "best_home_price",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "best_draw_price",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "best_away_price",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "total_market_percentage",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "guaranteed_profit_margin",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "detected_at",
+        "type": "timestamp without time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "opp_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "coach_history": {
+    "columns": [
+      {
+        "name": "history_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('coach_history_history_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "coach_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "end_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "matches_managed",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "win_percentage",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "history_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "coaches": {
+    "columns": [
+      {
+        "name": "coach_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('coaches_coach_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "current_team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "preferred_formation",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "career_win_pct",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "trophies_won",
+        "type": "integer",
+        "nullable": true,
+        "default": "0",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "coach_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "current_team_id",
+        "references": "teams.team_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "finance_ledger": {
+    "columns": [
+      {
+        "name": "transaction_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('finance_ledger_transaction_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "opp_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "opportunities.opp_id"
+      },
+      {
+        "name": "stake_amount",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "odds_taken",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "potential_return",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "outcome",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": "'PENDING'::character varying",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "actual_profit",
+        "type": "numeric",
+        "nullable": true,
+        "default": "0.00",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "bankroll_balance",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "bet_date",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "transaction_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "opp_id",
+        "references": "opportunities.opp_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "h2h_trends": {
+    "columns": [
+      {
+        "name": "trend_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('h2h_trends_trend_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "team_a_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "team_b_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "matches_played",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "team_a_wins",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "team_b_wins",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "draws",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "avg_goals_per_match",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "last_meeting_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "winner_last_meeting",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      }
+    ],
+    "primary_keys": [
+      "trend_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "team_a_id",
+        "references": "teams.team_id"
+      },
+      {
+        "column": "team_b_id",
+        "references": "teams.team_id"
+      },
+      {
+        "column": "winner_last_meeting",
+        "references": "teams.team_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "injuries": {
+    "columns": [
+      {
+        "name": "injury_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('injuries_injury_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "player_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "injury_type",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "expected_return_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "games_missed",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "injury_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "league_standings": {
+    "columns": [
+      {
+        "name": "standing_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('league_standings_standing_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "league_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "leagues.league_id"
+      },
+      {
+        "name": "season_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "seasons.season_id"
+      },
+      {
+        "name": "team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "points",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "goal_difference",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "form_last_5",
+        "type": "character varying(5)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "standing_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "league_id",
+        "references": "leagues.league_id"
+      },
+      {
+        "column": "season_id",
+        "references": "seasons.season_id"
+      },
+      {
+        "column": "team_id",
+        "references": "teams.team_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "leagues": {
+    "columns": [
+      {
+        "name": "league_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('leagues_league_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "country",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "tier",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "current_season_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "seasons.season_id"
+      }
+    ],
+    "primary_keys": [
+      "league_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "current_season_id",
+        "references": "seasons.season_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "market_odds": {
+    "columns": [
+      {
+        "name": "odd_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('market_odds_odd_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "matches.match_id"
+      },
+      {
+        "name": "bookie_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "bookmakers.bookie_id"
+      },
+      {
+        "name": "market_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "selection",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "odds",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "timestamp",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "strategy_tag",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "odd_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "match_id",
+        "references": "matches.match_id"
+      },
+      {
+        "column": "bookie_id",
+        "references": "bookmakers.bookie_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "matches": {
+    "columns": [
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('matches_match_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "league_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "leagues.league_id"
+      },
+      {
+        "name": "season_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "seasons.season_id"
+      },
+      {
+        "name": "home_team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "away_team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "venue_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "venues.venue_id"
+      },
+      {
+        "name": "referee_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "referees.referee_id"
+      },
+      {
+        "name": "kickoff_time",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "home_score",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "away_score",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "status",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": "'SCHEDULED'::character varying",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "match_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "league_id",
+        "references": "leagues.league_id"
+      },
+      {
+        "column": "season_id",
+        "references": "seasons.season_id"
+      },
+      {
+        "column": "home_team_id",
+        "references": "teams.team_id"
+      },
+      {
+        "column": "away_team_id",
+        "references": "teams.team_id"
+      },
+      {
+        "column": "venue_id",
+        "references": "venues.venue_id"
+      },
+      {
+        "column": "referee_id",
+        "references": "referees.referee_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "opportunities": {
+    "columns": [
+      {
+        "name": "opp_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('opportunities_opp_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "matches.match_id"
+      },
+      {
+        "name": "type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "bookie_a_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "bookmakers.bookie_id"
+      },
+      {
+        "name": "odds_a",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "bookie_b_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "bookmakers.bookie_id"
+      },
+      {
+        "name": "odds_b",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "profit_margin_percent",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "status",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": "'OPEN'::character varying",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "opp_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "match_id",
+        "references": "matches.match_id"
+      },
+      {
+        "column": "bookie_a_id",
+        "references": "bookmakers.bookie_id"
+      },
+      {
+        "column": "bookie_b_id",
+        "references": "bookmakers.bookie_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "player_performance_history": {
+    "columns": [
+      {
+        "name": "stat_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('player_performance_history_stat_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "player_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "season_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "minutes_played",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "average_rating",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "goals",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "assists",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "xg_generated",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "conversion_rate",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "tackles_won_pct",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "aerial_duels_won_pct",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "errors_leading_to_goal",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "clean_sheets",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "stat_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "players": {
+    "columns": [
+      {
+        "name": "player_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('players_player_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "team_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "teams.team_id"
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "position",
+        "type": "character varying(10)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "is_injured",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "expected_return",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "is_legendary",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "goals_season",
+        "type": "integer",
+        "nullable": true,
+        "default": "0",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "assists_season",
+        "type": "integer",
+        "nullable": true,
+        "default": "0",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "minutes_played",
+        "type": "integer",
+        "nullable": true,
+        "default": "0",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "defender_rank_score",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "gk_save_pct",
+        "type": "numeric",
+        "nullable": true,
+        "default": "0.00",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "matches_started_percent",
+        "type": "numeric",
+        "nullable": true,
+        "default": "0.00",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "player_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "team_id",
+        "references": "teams.team_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "predictions": {
+    "columns": [
+      {
+        "name": "pred_id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('predictions_pred_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "matches.match_id"
+      },
+      {
+        "name": "prob_home",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "prob_draw",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "prob_away",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "xg_home",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "xg_away",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "generated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "pred_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "match_id",
+        "references": "matches.match_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "referees": {
+    "columns": [
+      {
+        "name": "referee_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('referees_referee_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "avg_cards_per_game",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "penalty_awarded_freq",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "referee_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "seasons": {
+    "columns": [
+      {
+        "name": "season_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('seasons_season_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "end_date",
+        "type": "date",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "season_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "teams": {
+    "columns": [
+      {
+        "name": "team_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('teams_team_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "league_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "leagues.league_id"
+      },
+      {
+        "name": "venue_id",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": "venues.venue_id"
+      },
+      {
+        "name": "elo_rating",
+        "type": "numeric",
+        "nullable": true,
+        "default": "1500.00",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "attack_strength",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "defense_strength",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "team_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "league_id",
+        "references": "leagues.league_id"
+      },
+      {
+        "column": "venue_id",
+        "references": "venues.venue_id"
+      }
+    ],
+    "row_count": 0
+  },
+  "user_accounts": {
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_accounts_user_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "username",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "password_hash",
+        "type": "character varying(255)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "role",
+        "type": "character varying(20)",
+        "nullable": true,
+        "default": "'ANALYST'::character varying",
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "last_login",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()",
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "user_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "venues": {
+    "columns": [
+      {
+        "name": "venue_id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('venues_venue_id_seq'::regclass)",
+        "is_pk": true,
+        "fk_reference": null
+      },
+      {
+        "name": "name",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "city",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "capacity",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "altitude_meters",
+        "type": "integer",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "surface_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [
+      "venue_id"
+    ],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "view_best_prices": {
+    "columns": [
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "market_type",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "selection",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "best_price",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "best_bookmaker",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "last_updated",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [],
+    "foreign_keys": [],
+    "row_count": 0
+  },
+  "view_scam_detector": {
+    "columns": [
+      {
+        "name": "match_id",
+        "type": "bigint",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "logic_group",
+        "type": "text",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "selection",
+        "type": "character varying(100)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "odds",
+        "type": "numeric",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      },
+      {
+        "name": "bookie",
+        "type": "character varying(50)",
+        "nullable": true,
+        "default": null,
+        "is_pk": false,
+        "fk_reference": null
+      }
+    ],
+    "primary_keys": [],
+    "foreign_keys": [],
+    "row_count": 0
+  }
+}

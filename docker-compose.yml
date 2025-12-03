@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  python-backend:
+    build: ./python-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_NAME=student_finance_dream
+      - DB_USER=Waren_Dev
+      - DB_PASSWORD=
+      - RAPIDAPI_KEY=${RAPIDAPI_KEY}
+    volumes:
+      - ./python-backend:/app
+      - ../../engine.py:/app/engine.py
+      - ../../feed.py:/app/feed.py
+      - ../../db_connection.py:/app/db_connection.py
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  typescript-frontend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - DATABASE_URL=postgresql://Waren_Dev@host.docker.internal:5432/student_finance_dream
+    volumes:
+      - ./client:/app/client
+      - ./server:/app/server
+      - ./shared:/app/shared
+    depends_on:
+      - python-backend
+    command: npm run dev

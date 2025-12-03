@@ -1,0 +1,42 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: sports-prediction-db
+    env: docker
+    plan: free
+    region: oregon
+    databases:
+      - name: student_finance_dream
+        user: Waren_Dev
+
+  # Python Backend API
+  - type: web
+    name: sports-prediction-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: sports-prediction-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: sports-prediction-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: sports-prediction-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: sports-prediction-db
+          property: password
+      - key: ALLSPORTSAPI_KEY
+        sync: false
+      - key: THEODDS_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
